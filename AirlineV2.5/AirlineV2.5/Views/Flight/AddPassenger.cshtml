@@ -1,0 +1,31 @@
+﻿@model AirlineV2._5.Models.ClnRelFlg
+
+@{
+    ViewData["Title"] = "Agregando Pasajero";
+}
+
+<h1>Agregar Pasajero</h1>
+<h4>Vuelo #@ViewBag.FlgID</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6" style="margin:0 auto;">
+        <form action="~/vuelo/pasajeros/agregar/@ViewBag.FlgID" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="text-center text-danger">@Html.ValidationMessage("oneZ")</div>
+            <div class="form-group">
+                <label asp-for="ClnID" class="control-label">Nombre del Cliente</label>
+                <select asp-for="ClnID" class ="form-control" asp-items="ViewBag.ClnID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Agregar Pasajero" class="btn btn-outline-primary" style="width:100%;" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        document.querySelector("nav").hidden = true;
+    </script>
+}

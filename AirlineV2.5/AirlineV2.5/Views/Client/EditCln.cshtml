@@ -1,0 +1,51 @@
+﻿@model AirlineV2._5.Models.Client
+
+@{
+    ViewData["Title"] = "Editando Cliente";
+}
+
+<h1>Editar Cliente</h1>
+<hr />
+<div class="row">
+    <div class="col-md-6" style="margin:0 auto;">
+        <form action="~/cliente/editar/@Model.ClnID" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ClnID" />
+            <input type="hidden" asp-for="ClnRegisterDate"/>
+            <sbc-row-frm class="row">
+                <sbc-col-frm-lft class="col col-md-6 form-group">
+                    <label asp-for="ClnName" class="control-label">Nombre</label>
+                    <input asp-for="ClnName" class="form-control" />
+                    <span asp-validation-for="ClnName" class="text-danger"></span>
+                </sbc-col-frm-lft>
+                <sbc-col-frm-rgth class="col col-md-6 form-group">
+                    <label asp-for="ClnLastName" class="control-label">Apellido</label>
+                    <input asp-for="ClnLastName" class="form-control" />
+                    <span asp-validation-for="ClnLastName" class="text-danger"></span>
+                </sbc-col-frm-rgth>
+            </sbc-row-frm>
+            <div class="form-group">
+                <label asp-for="ClnPhone" class="control-label">Teléfono</label>
+                <input asp-for="ClnPhone" class="form-control" />
+                <span asp-validation-for="ClnPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClnEmail" class="control-label">Correo Electrónico</label>
+                <input asp-for="ClnEmail" class="form-control" />
+                <span asp-validation-for="ClnEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClnBirthdate" class="control-label">Fecha de Nacimiento</label>
+                <input asp-for="ClnBirthdate" type="date" class="form-control" />
+                <span asp-validation-for="ClnBirthdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar Cambios" style="width:100%;" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

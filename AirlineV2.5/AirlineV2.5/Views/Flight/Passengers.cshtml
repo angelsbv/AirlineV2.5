@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AirlineV2._5.Models.ClnRelFlg>
+
+@{
+    ViewData["Title"] = "Pasajeros";
+}
+
+<h1>Pasajeros</h1>
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Número de Cliente
+                </th>
+                <th>
+                    Nombre Completo del Cliente
+                </th>
+                <th>
+                    <a href="~/vuelo/pasajeros/agregar/@ViewBag.FlgID">Agregar Pasajero</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.ClnID
+                    </td>
+                    <td>
+                        @item.client.ClnName @item.client.ClnLastName
+                        <br/>
+                        <a href="~/clientes" target="_blank">Más información</a>
+                    </td>
+                    <td>
+                        <a href="~/vuelo/pasajeros/eliminar/@item.ClnFlgID/@item.FlgID" id="sbElim">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-danger text-center" style="max-width:600px; margin:0 auto;box-shadow: 0 0 0.2rem 0 #000000;">
+        <h3>
+            <strong>
+                Actualmente este vuelo no tiene ningún pasajero, intente <a href="~/vuelo/pasajeros/agregar/@ViewBag.FlgID">agregar uno</a>.
+            </strong>
+        </h3>
+    </div>
+}
+<script>
+    document.querySelector("nav").hidden = true;
+    document.querySelector("#sbElim")
+        .addEventListener("click", (e) => {
+            if (!confirm("¿Seguro que desea eliminar este pasajero de este vuelo?"))
+            {
+                e.preventDefault();
+            }
+        });
+</script>

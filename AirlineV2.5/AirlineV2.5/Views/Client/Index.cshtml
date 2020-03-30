@@ -1,0 +1,76 @@
+﻿@model IEnumerable<AirlineV2._5.Models.Client>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+@if (Model.Count() > 0)
+{
+    <h1>Clientes</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Apellido
+                </th>
+                <th>
+                    Teléfono
+                </th>
+                <th>
+                    Correo Electrónico
+                </th>
+                <th>
+                    Fecha de Nacimiento
+                </th>
+                <th>
+                    Fecha de Registro
+                </th>
+                <th>
+                    <a href="~/cliente/agregar" class="btn btn-outline-success">Agregar Nuevo</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.ClnName
+                    </td>
+                    <td>
+                        @item.ClnLastName
+                    </td>
+                    <td>
+                        @item.ClnPhone
+                    </td>
+                    <td>
+                        @item.ClnEmail
+                    </td>
+                    <td>
+                        @item.ClnBirthdate.ToShortDateString()
+                    </td>
+                    <td>
+                        @item.ClnRegisterDate
+                    </td>
+                    <td>
+                        <a href="~/cliente/editar/@item.ClnID" class="btn btn-outline-warning">Editar</a>
+                        <a href="~/cliente/eliminar/@item.ClnID" class="btn btn-outline-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-danger text-center" style="max-width:600px; margin:0 auto;box-shadow: 0 0 0.2rem 0 #000000;">
+        <h3>
+            <strong>
+                Actualmente no hay clientes registrados, intente <a href="~/cliente/agregar">agregar uno</a>.
+            </strong>
+        </h3>
+    </div>
+}

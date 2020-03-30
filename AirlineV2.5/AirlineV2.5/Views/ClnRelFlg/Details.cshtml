@@ -1,0 +1,30 @@
+﻿@model AirlineV2._5.Models.ClnRelFlg
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ClnRelFlg</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.client)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.client.ClnEmail)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.flight)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.flight.FlgCategory)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ClnFlgID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

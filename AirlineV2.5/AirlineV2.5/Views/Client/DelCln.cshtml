@@ -1,0 +1,54 @@
+﻿@model AirlineV2._5.Models.Client
+
+@{
+    ViewData["Title"] = "Eliminando Cliente";
+}
+
+<h1>Eliminar</h1>
+<h4>@Model.ClnName @Model.ClnLastName</h4>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Nombre
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.ClnName
+        </dd>
+        <dt class = "col-sm-2">
+            Apellido
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ClnLastName
+        </dd>
+        <dt class = "col-sm-2">
+            Teléfono
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.ClnPhone
+        </dd>
+        <dt class = "col-sm-2">
+            Correo Electrónico
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.ClnEmail
+        </dd>
+        <dt class = "col-sm-2">
+            Fecha de Nacimiento
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ClnBirthdate
+        </dd>
+        <dt class = "col-sm-2">
+            Fecha de Registro
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.ClnRegisterDate
+        </dd>
+    </dl>
+    
+    <form action="~/cliente/eliminar/@Model.ClnID" method="post" class="text-left" style="width:100%;">
+        <input type="hidden" asp-for="ClnID" />
+        <input type="submit" value="Eliminar Cliente" class="btn btn-outline-danger" style="width:27%;" />
+    </form>
+</div>
